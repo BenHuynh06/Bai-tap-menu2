@@ -19,7 +19,7 @@ int main () {
 
 void userChoice(int choice, int n) {
     do {
-        printf ("1 - Fibonacci sequence.\n");
+        printf ("\n1 - Fibonacci sequence.\n");
         printf ("2 - Check a date.\n");
         printf ("3 - Sum of even integers from 0 to n.\n");
         printf ("4 - Quit.\n");
@@ -147,27 +147,16 @@ void inputDate(int *day, int *month, int *year) {
     scanf("%d", year);
 }
 
-bool evenNumbers(int n) {
-    for(int i = 0; i < n; i++) {
-        if (n % i == 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    return true;
-}
-
 int sumEven(int n) {
     int sum = 0;
     for (int i = 0; i < n; i++) {
-        if (evenNumbers(i)) {
+        if (i % 2 == 0) {
             sum += i;
         } 
     }
-    printf ("Sum even = %d\n", sum);
-    if (!evenNumbers) {
-            printf ("Not even numbers.\n");
+    printf ("Sum even = %d", sum);
+     if (n<0) {
+        printf ("n > 0");
     }
     return sum;
 }
