@@ -6,21 +6,25 @@ bool isLeapYear(int);
 bool Date(int day, int month, int year);
 void printFibonacci(int);
 void userChoice(int, int);
+void inputDate(int *day, int *month, int *year);
+bool evenNumbers(int n);
+int sumEven(int n);
 
 int main () {
     int n, choice;
-    
+    // choice = n = 0;
     userChoice (choice, n);
     return 0;
 }
 
 void userChoice(int choice, int n) {
     do {
-        printf ("1 - Fibonacci sequence.\n");
+        printf ("\n1 - Fibonacci sequence.\n");
         printf ("2 - Check a date.\n");
         printf ("3 - Sum of even integers from 0 to n.\n");
         printf ("4 - Quit.\n");
-        scanf ("Please choose 1 operation: ", &choice);
+        printf ("Please choose 1 operation: ");
+        scanf ("%d", &choice);
         
         switch (choice) {
             case 1:
@@ -35,17 +39,26 @@ void userChoice(int choice, int n) {
             break;
             
             case 2:
+                int day, month, year;
                 do {
-                    input (&n);
+                    inputDate(&day, &month, &year);
                 } while (n < 0);
                 if (Date(day, month, year)) {
-                    printf ("Ngay thanh hop le.\n");
+                    printf ("Ngay thang hop le.\n");
                 } else {
                     printf ("Ngay thang khong hop le.\n");
                 }
             break;
             
             case 3: 
+                do {
+                    input (&n);
+                } while (n < 0);
+                if (n > 0) {
+                    sumEven(n);
+                } else {
+                    printf ("Loi!");
+                }
             break;
             
             case 4:
@@ -54,6 +67,7 @@ void userChoice(int choice, int n) {
             
             default: 
                 printf ("Khong the thuc hien.\n");
+                break;
         }
     } while (choice != 4);
 }
@@ -122,4 +136,27 @@ bool Date(int day, int month, int year) {
     }
 
     return true;
+}
+
+void inputDate(int *day, int *month, int *year) {
+    printf("Nhap ngay: ");
+    scanf("%d", day);
+    printf("Nhap thang: ");
+    scanf("%d", month);
+    printf("Nhap nam: ");
+    scanf("%d", year);
+}
+
+int sumEven(int n) {
+    int sum = 0;
+    for (int i = 0; i < n; i++) {
+        if (i % 2 == 0) {
+            sum += i;
+        } 
+    }
+    printf ("Sum even = %d", sum);
+     if (n<0) {
+        printf ("n > 0");
+    }
+    return sum;
 }
